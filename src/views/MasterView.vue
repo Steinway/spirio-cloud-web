@@ -1,0 +1,66 @@
+<template>
+  <div>
+    <div class="rounded-md h-20 bg-slate-200 border-slate-300 border-dashed border-2 mb-6"> Logo </div>
+    
+    <!-- User Folder Group -->
+    <collapsible-folder-group :folderList="userFolderList">
+      <template #headerIcon>
+        <!-- cloud icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+      </template>
+      <template #headerTitle>SPIRIOCLOUD</template>
+    </collapsible-folder-group>
+   
+    <!-- User Folder Group -->
+    <collapsible-folder-group :folderList="sharedFolderList1">
+      <template #headerTitle>JFEIDNER</template>
+    </collapsible-folder-group>
+    
+    <!-- User Folder Group -->
+    <collapsible-folder-group :folderList="sharedFolderList2">
+      <template #headerTitle>RENEEOAK</template>
+    </collapsible-folder-group>
+
+
+
+  </div>
+</template>
+
+<script>
+import CollapsibleFolderGroup from '../components/CollapsibleFolderGroup.vue'
+export default {
+  name: 'MasterView',
+  components: {
+    CollapsibleFolderGroup
+  },
+  data: function(){
+    return {
+      userFolderList: [
+        "My Chopin",
+        "Music Theory Term 2 - 2022",
+        "Sing-Along Review"
+      ],
+      sharedFolderList1: [
+        "Parrino 10.22.21 Session 1",
+        "Parrino 10.23.21 Session 2",
+        "Kazumi’s Edits",
+        "Renee’s Edits",
+        "Lin 01.18.21 Session 1"
+      ],
+      sharedFolderList2: [
+        "My Chopin",
+        "Music Theory Term 2 - 2022",
+        "Sing-Along Review"
+      ],
+    }
+  },
+  props: {
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>
