@@ -1,19 +1,20 @@
 <template>
-  <div class="h-screen flex flex-nowrap ">
-    <master-view class="flex-none w-72 p-3 m-1 shadow-lg overflow-y-auto" />
-    <detail-view class="flex-auto" />
+  <div class="flex flex-nowrap h-screen">
+    <master-view class="" />
+    <!-- <detail-view class="flex-auto" /> -->
+    <router-view />
   </div>  
 </template>
 
 <script>
 import MasterView from './MasterView.vue'
-import DetailView from './DetailView.vue'
+// import DetailView from './DetailView.vue'
 
 export default {
   name: 'LayoutView',
   components: {
     MasterView,
-    DetailView
+    // DetailView
   }
 }
 </script>

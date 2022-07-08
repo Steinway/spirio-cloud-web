@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <router-view class="" />
 </template>
 
 <script>
@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style>
+body{
+  overflow: hidden;
+}
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="mb-8">
     <!-- Folder Group Header -->
-    <div class="flex justify-between">
+    <div class="flex justify-between cursor-pointer" @click="toggleIsExpanded">
       <div class="flex mb-2">
         <slot name="headerIcon"></slot>
 
@@ -12,7 +12,7 @@
       </div>
 
       <!-- collapse icon -->
-      <div class="border flex h-6 w-6 rounded border-slate-800 cursor-pointer" @click="toggleIsExpanded">
+      <div class="border flex h-6 w-6 rounded border-slate-800 cursor-pointer" >
         <svg v-if="isExpanded" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-800" viewBox="0 0 18 19" fill="currentColor">
           <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
         </svg>
@@ -51,6 +51,9 @@ export default {
     return {
       isExpanded: true
     }
+  },
+  computed:{
+    
   },
   methods: {
     toggleIsExpanded(){
