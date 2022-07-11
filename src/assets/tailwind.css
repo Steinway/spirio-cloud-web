@@ -3,3 +3,30 @@
 @tailwind components;
 
 @tailwind utilities;
+
+/* Custom overrides */
+@layer base {
+    body {
+        overflow: hidden;
+    }
+}
+
+@font-face {
+    font-family: "KNOCKOUT-47";
+    src: url("../../public/typo/ko/knockout-47-webfont.ttf");
+}
+
+@font-face {
+    font-family: "KNOCKOUT-481";
+    src: url("../../public/typo/ko/knockout-481-webfont.ttf");
+}
+
+@font-face {
+    font-family: "MINION";
+    src: url("../../public/typo/min/MinionProRegular.ttf");
+}
+
+@font-face {
+    font-family: "MINION-IT";
+    src: url("../../public/typo/min/MinionProIt.ttf");
+}

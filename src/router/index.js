@@ -17,7 +17,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/MasterView.vue')
       },
       {
-        path: '/folder/:folderName',
+        path: '/folder/:userName/:folderName',
         name: 'test',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
