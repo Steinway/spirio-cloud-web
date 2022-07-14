@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="font-minion w-full"
+    class="font-minion w-full flex flex-col h-screen"
   >
 
     <div
@@ -30,268 +30,135 @@
       :class="breakpointClassesOuter"
     >
 
-        <!-- Header Text -->
-        <div class="border-r border-black pr-4 mr-4">
-          <!-- Super Header -->
-          <div class="flex justify-end">
-            <!-- cloud icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 text-slate-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-            </svg>
-            <h2 class="text-xl tracking-widest">Spirio Cloud</h2>
-          </div>
-          <!-- Title Header -->
-          <h1 class=" text-5xl tracking-wider">Sing-Along Review</h1>
+      <!-- Header Text -->
+      <div class="border-r border-black pr-4 mr-4">
+        <!-- Super Header -->
+        <div class="flex justify-end">
+          <!-- cloud icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 text-slate-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+          </svg>
+          <h2 class="text-xl tracking-widest">{{$route.params.userName}}</h2>
         </div>
+        <!-- Title Header -->
+        <h1 class=" text-5xl tracking-wider">{{$route.params.folderName}}</h1>
+      </div>
 
-        <!-- Dots Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 self-center" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-        </svg>
+      <!-- Dots Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 self-center" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+      </svg>
 
     </header>
 
+    <file-list-table :fileList="folderItems" />
 
-    <div
-      class="grid grid-cols-6 uppercase tracking-widest text-sm mt-6"
-      :class="breakpointClasses"
+    <footer 
+      class="h-32 mt-auto flex-shrink-0 text-gray-500"
+      :class="containerBreakpointClasses"
     >
-      <!-- Table Header -->
-      <div class="col-span-3 mb-1">
-        <input type="checkbox" />
-        Work / Song
+      <div class="">
+        <a 
+          v-for="(link, index) in footerLinks" 
+          class="pl-3 pr-3"  
+          :class="{ 'border-r' : !isLastItem(index, footerLinks.length-1) }"
+          :key="link.title" 
+          :href="link.url">
+            {{link.title}}
+        </a>
+
       </div>
-      <div class="col-span-2">Modified</div>
-      <!-- Icon Controls -->
-      <div class="col-span-1"></div>
-    </div>
-      <div 
-        class=" col-span-6 border-b-8 border-black"
-        :class="breakpointClasses"
-      ></div>
 
-    <div class=" overflow-y-scroll h-full">
-      <!-- data row -->
-      <div 
-        v-for="item in folderItems" 
-        :key="`${item.songTitle}-${item.modified}`"
-        class="grid grid-cols-6 pt-4 pb-4  border-b "
-        :class="breakpointClasses"
-      >
-        <div class="col-span-3">
-          <input type="checkbox" />
-          {{item.songTitle}} 
-          <span class="text-gray-400 font-minionIT">
-            &nbsp;|&nbsp;{{item.duration}}
-          </span>
-        </div>
-        <div class="col-span-2">
-          {{item.modified}} 
-          <span class="text-gray-400 font-minionIT">
-            by&nbsp;{{item.modifiedBy}}
-          </span>
-          
-        </div>
-        <div class="flex justify-between text-gray-400 col-span-1">
-          <!-- Cloud Download Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
-          </svg>  
-
-          <!-- File Send Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-          </svg>
-
-          <!-- Dots Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-          </svg>
-
-        </div>
-      </div>
-    </div>
+    </footer>
 
 
 
-    <div></div>
+
   </div>
 </template>
 
 <script>
+import useDetailViewSharedStyles from '@/use/DetailViewSharedStyles.vue'
+import FileListTable from '../components/FileListTable.vue'
+
 export default {
   name: 'DetailView',
+  components: {
+    FileListTable
+  },
   props: {
   },
+  setup(){
+    console.log("hi")
+    return useDetailViewSharedStyles()
+
+  },
+  methods:{
+    isLastItem(index, compare){
+      return index === compare
+    }
+  },
+
   data: function(){
     return {
-      breakpointClassesOuter: `
-        mr-2 ml-2
-        md:ml-3 md:mr-3 
-        lg:ml-5 lg:mr-5
-      `,
-      breakpointClassesInner: `
-        pr-2 pl-2 
-        md:pl-3 md:pr-3 
-        lg:pl-5 lg:pr-5
-      `,
-      folderItems: [
+      footerLinks: [
         {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
+          title: "About",
+          url: ""
         },
         {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
+          title: "Contact Us",
+          url: ""
         },
         {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
+          title: "Privacy Policy",
+          url: ""
         },
         {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-                {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-                {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-                {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-                {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
-        },
-        {
-          songTitle: 'Radiohead_01_ Creep_ed2',
-          duration: '3:14',
-          modified: '03/28/2018 5:13 pm',
-          modifiedBy: 'Kazumil123'
+          title: "Terms & Conditions",
+          url: ""
         },
       ]
     }
   },
   computed: {
-    breakpointClasses: function(){
-      return `${this.breakpointClassesInner} ${this.breakpointClassesOuter}`
+    folderName: function(){
+      return this.$route.params.folderName
+    },
+    folderItems: function(){
+      const items = [
+        {
+          songTitle: 'Radiohead_01_ Creep_ed2',
+          duration: '3:14',
+          modified: '03/28/2018 5:13 pm',
+          modifiedBy: 'Kazumil123'
+        },
+        {
+          songTitle: 'Radiohead_01_Motion Picture Soundtrack _ed3',
+          duration: '6:14',
+          modified: '03/28/2018 5:13 pm',
+          modifiedBy: 'BSantos'
+        },
+        {
+          songTitle: 'Radiohead_01_Anyone Can Play Guitar_ed2',
+          duration: '3:19',
+          modified: '03/28/2018 5:13 pm',
+          modifiedBy: 'DWhalen'
+        },
+        {
+          songTitle: 'Radiohead_01_Karma_Police_ed2_extended_mix_4',
+          duration: '3:19',
+          modified: '03/28/2018 12:13 pm',
+          modifiedBy: 'DWhalen'
+        }
+      ]
+
+      let folderItems = []
+      for (let index = 0; index < Math.floor(Math.random()*100); index++) {
+        folderItems.push(items[Math.floor(Math.random()*items.length)])
+      }
+
+      return folderItems
     }
   }
 }

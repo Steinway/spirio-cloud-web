@@ -2,7 +2,9 @@
   <div class="flex flex-nowrap h-screen">
     <master-view class="" />
     <!-- <detail-view class="flex-auto" /> -->
-    <router-view />
+
+    <!-- https://stackoverflow.com/questions/41305573/vue-router-reload-components -->
+    <router-view :key="$route.fullPath" />
   </div>  
 </template>
 
