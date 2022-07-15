@@ -15,7 +15,7 @@ export default function useDetailViewSharedStyles(){
     md:pl-3 md:pr-3 
     lg:pl-5 lg:pr-5
   `)
-  const checkbox = ref('w-5 h-5 text-black ring-inset hover:ring-1 hover:ring-gray-300 focus:ring-white focus:ring-0')
+  const checkbox = ref('w-5 h-5 text-black ring-inset hover:ring-1 hover:ring-gray-300 focus:ring-white focus:ring-0 cursor-pointer')
   
   const containerBreakpointClasses = computed(()=>{
     // return `${breakpointClassesOuter.value} ${breakpointClassesInner.value}`.replace(/\n/g, " ");

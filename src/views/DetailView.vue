@@ -4,7 +4,7 @@
   >
 
     <div
-      class="flex justify-end mt-10 mb-10"
+      class="flex justify-end mt-8 mb-8"
       :class="breakpointClassesOuter"
     >
       <button 
@@ -26,7 +26,7 @@
 
     <!-- Header -->
     <header 
-      class="flex justify-end text-right align-middle uppercase font-knockout481"
+      class="flex justify-end text-right align-middle uppercase font-knockout481 mb-2"
       :class="breakpointClassesOuter"
     >
 
@@ -54,10 +54,10 @@
     <file-list-table :fileList="folderItems" />
 
     <footer 
-      class="h-32 mt-auto flex-shrink-0 text-gray-500"
-      :class="containerBreakpointClasses"
+      class=" h-28 pt-2 mt-auto flex-shrink-0 text-gray-500 flex flex-col tracking-wider text-right"
+      :class="breakpointClassesOuter"
     >
-      <div class="">
+      <div class="pt-2 pb-2 border-gray-300 text-right border-b">
         <a 
           v-for="(link, index) in footerLinks" 
           class="pl-3 pr-3"  
@@ -66,8 +66,18 @@
           :href="link.url">
             {{link.title}}
         </a>
-
       </div>
+
+      <div class="font-minionIT pt-2 text-base">
+        <small>
+          &copy; 2022 Steinway & Sons. Steinway and the Lyre are registered trademarks.
+        </small>
+        <br>
+        <small>
+          One Steinway Place, Astoria, NY 11105 (718) 721-2600
+        </small>
+
+</div>
 
     </footer>
 

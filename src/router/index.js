@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import LayoutView from '../views/LayoutView.vue'
+import DetailView from '../views/DetailView.vue'
 
 const routes = [
   {
@@ -14,15 +15,12 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/MasterView.vue')
+        component: () => import(/* webpackChunkName: "master" */ '../views/MasterView.vue')
       },
       {
         path: '/folder/:userName/:folderName',
         name: 'test',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/DetailView.vue')
+        component: DetailView
       },
     ]
   },

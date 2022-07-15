@@ -1,8 +1,8 @@
 <template>
     <!-- User Area  -->
     <div class="h-20 bg-white font-knockout481 shrink-0 flex items-center p-3 cursor-pointer">
-      <div class="flex items-center justify-center text-lg bg-blue-400 w-8 h-8 text-white rounded-full">{{username[0]}}</div>
-      <div class="ml-2 text-lg tracking-widest">{{username}}</div>
+      <div class="flex items-center justify-center text-xl bg-blue-400 w-11 h-11 text-white rounded-full">{{username[0]}}</div>
+      <div class="ml-4 text-xl tracking-widest">{{username}}</div>
     </div>
 </template>
 

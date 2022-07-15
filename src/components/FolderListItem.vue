@@ -2,7 +2,7 @@
   <!-- folder list item -->
   <router-link 
     :to="`/folder/${userName}/${title}`" 
-    class="flex pt-2 pb-2 pl-1 pr-1 rounded-sm cursor-pointer" 
+    class="flex p-2 rounded cursor-pointer" 
     :class="{ 
       'bg-gray-200' : isActive,
       'text-gray-600': rowHasHover &&! isActive
@@ -13,7 +13,7 @@
     >
     <!-- folder icon -->
     <svg xmlns="http://www.w3.org/2000/svg" 
-      class="h-5 w-5 text-gray-800 mr-2" 
+      class="h-6 w-6 text-gray-800 mr-2" 
       :class="{ 
         'bg-gray-200' : isActive,
         'text-gray-600': rowHasHover &&! isActive
@@ -21,7 +21,7 @@
     fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
       <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
     </svg>
-    <p class=" text-sm">{{title}}</p>
+    <p class=" tracking-wider">{{title}}</p>
   </router-link>
 </template>
 

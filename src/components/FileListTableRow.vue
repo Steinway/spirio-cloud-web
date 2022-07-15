@@ -4,41 +4,46 @@
     class="grid grid-cols-6 pt-4 pb-4 border-b snap-start"
     :class="containerBreakpointClasses"
   >
-
     <div class="col-span-3">
       
-      <label class="flex">
-        <input :checked="checked" id="" :class="checkbox" type="checkbox" />
-        <span class="pl-3 pr-3 block">{{title}}
-          <span class="text-gray-400 font-minionIT">
-           &nbsp;|&nbsp;{{duration}}
+      <label class="flex break-all cursor-pointer">
+        <input :checked="checked" id="" class=" mr-2 self-center" :class="checkbox" type="checkbox" />
+        <span class="pl-2 pr-2">
+          <span class="mr-2 text-lg">
+           {{title}}
+          </span>
+
+          <span class="text-gray-400 border-l border-gray-300 font-minionIT pl-2 break-normal">
+           <span class="">
+              {{duration}}
+            </span>
           </span>
         </span> 
       </label>
       
     </div>
 
-    <div class="col-span-2">
+    <div class="col-span-2 self-center">
         {{modified}} 
       <span class="text-gray-400 font-minionIT">
         by&nbsp;{{modifiedBy}}
       </span>
     </div>
 
-    <div class="flex justify-between text-gray-400 col-span-1">
+    <div class="flex justify-between text-gray-400 col-span-1 ">
         
       <!-- Cloud Download Icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 self-center cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
         <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
       </svg>  
 
       <!-- File Send Icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 self-center cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
         <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
       </svg>
 
       <!-- Dots Icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 self-center cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
         <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
       </svg>
     </div>

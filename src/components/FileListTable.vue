@@ -1,19 +1,21 @@
 <template>
   <div
-    class="grid grid-cols-6 uppercase tracking-widest text-sm mt-6"
+    class="grid grid-cols-6 uppercase tracking-widest"
     :class="containerBreakpointClasses"
   >
     <!-- Table Header -->
-    <div class="col-span-3 mb-1">
+    <div class="col-span-3">
       <input type="checkbox" :class="checkbox" />
-      Work / Song
+      <span class="ml-4">
+        Work / Song
+      </span>
     </div>
     <div class="col-span-2">Modified</div>
     <!-- Icon Controls -->
     <div class="col-span-1"></div>
   </div>
   <div 
-    class=" col-span-6 border-b-8 border-black"
+    class=" col-span-6 border-b-4 border-black mt-2 mb-1"
     :class="containerBreakpointClasses"
   ></div>
 
