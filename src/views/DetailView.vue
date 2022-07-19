@@ -76,14 +76,8 @@
         <small>
           One Steinway Place, Astoria, NY 11105 (718) 721-2600
         </small>
-
-</div>
-
+      </div>
     </footer>
-
-
-
-
   </div>
 </template>
 

@@ -8,8 +8,12 @@ module.exports = {
         knockout481: ["KNOCKOUT-481", "san-serif"],
         minion: ["MINION-REGULAR", "san-serif"],
         minionIT: ["MINION-IT", "san-serif"]
+      },
+      colors:{
+        'gray' : {
+          200 : '#E1E1E1'
+        }  
       }
-
     },
   },
   plugins: [

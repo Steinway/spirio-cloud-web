@@ -23,12 +23,53 @@
       
     </div>
 
-    <div class="col-span-2 self-center">
+    <VMenu
+      :distance="-20" 
+      :triggers="['hover', 'touch']"
+      :delay="{show: 500, hide: 10}"
+    >
+      <div class="col-span-2 self-center cursor-pointer">
+        <span>
+          {{modified}} 
+        </span>
+        <span class="text-gray-400 font-minionIT">
+          by&nbsp;{{modifiedBy}}
+        </span>
+      </div>
+
+      <template #popper>
+        <div class="p-8 font-minion tracking-widest">
+          <div class="grid pb-4 grid-cols-3 gap-x-2 gap-y-6">
+            <strong>Modified:</strong>
+            <time datetime="03-20-2018 5:13pm">03/28/2018 <br> 5:13 pm</time>
+            <em class=" font-minionIT">by {{modifiedBy}}</em>
+
+            <strong>Recorded:</strong>
+            <date class="">03/28/2018</date>
+            <em class="font-minionIT">by 654992</em>
+
+            <strong>Performer:</strong>
+            <p class="col-span-2">Spirio Performer</p>
+
+            <!-- <div class="col-span-3">&nbsp;</div> -->
+
+            <strong>File Access:</strong>
+            <ul class="col-span-2">
+              <li class="font-minionIT">JFiedner</li>
+              <li class="font-minionIT">Roackford</li>
+              <li class="font-minionIT">kazumi123</li>
+              <li class="font-minionIT">mheckler</li>
+            </ul>
+          </div>
+        </div>
+      </template>
+    </VMenu>
+    <!-- <div class="col-span-2 self-center">
         {{modified}} 
       <span class="text-gray-400 font-minionIT">
         by&nbsp;{{modifiedBy}}
       </span>
-    </div>
+    </div> -->
 
     <div class="flex justify-between text-gray-400 col-span-1 ">
         
@@ -87,4 +128,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  :global(.v-popper__inner){
+    border-radius: 12px !important;
+  }
 </style>
