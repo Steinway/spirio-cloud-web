@@ -5,7 +5,7 @@
     class="flex p-2 rounded cursor-pointer" 
     :class="{ 
       'bg-gray-200' : isActive,
-      'text-gray-600': rowHasHover &&! isActive
+      'text-gray-500': rowHasHover &&! isActive
     }"
     
     @mouseover="setRowHasHover(true)"
@@ -30,7 +30,8 @@ export default {
   name: 'FolderListeItem',
   props: {
     title: String,
-    userName: String
+    userName: String,
+
 
   },
   data: function(){

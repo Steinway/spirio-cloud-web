@@ -10,7 +10,7 @@
       <!-- Folder Groups Scrollable Area -->
       <div class="overflow-y-scroll p-4">
         <!-- User Folder Group -->
-        <collapsible-folder-group :folderList="userFolderList" userName="user">
+        <collapsible-folder-group :folderList="userFolderList" :isSharedFolder="false" userName="user">
           <template #headerIcon>
             <!-- cloud icon -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 text-gray-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">

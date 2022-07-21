@@ -1,7 +1,7 @@
 <template>
   <!-- data row -->
   <div
-    class="grid grid-cols-6 pt-4 pb-4 border-b snap-start"
+    class="grid grid-cols-6 pt-4 pb-4 border-b snap-start items-center"
     :class="containerBreakpointClasses"
   >
     <div class="col-span-3">
@@ -9,7 +9,7 @@
       <label class="flex break-all cursor-pointer">
         <input :checked="checked" id="" class=" mr-2 self-center" :class="checkbox" type="checkbox" />
         <span class="pl-2 pr-2">
-          <span class="mr-2 text-lg">
+          <span class="mr-2">
            {{title}}
           </span>
 
@@ -27,6 +27,7 @@
       :distance="-20" 
       :triggers="['hover', 'touch']"
       :delay="{show: 500, hide: 10}"
+      class="col-span-2"
     >
       <div class="col-span-2 self-center cursor-pointer">
         <span>

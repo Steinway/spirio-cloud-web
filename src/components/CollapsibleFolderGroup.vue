@@ -1,20 +1,22 @@
 <template>
   <div class="mb-8 font-minion tracking-wider">
     <!-- Folder Group Header -->
-    <div class="flex justify-between cursor-pointer" @mouseover="setHeaderRowHasHover(true)" @mouseleave="setHeaderRowHasHover(false)" @click="toggleIsExpanded">
+    <div class="flex justify-between cursor-pointer" @mouseover="setHeaderRowHasHover(true)" @mouseleave="setHeaderRowHasHover(false)" >
       <div class="flex mb-2">
         <slot name="headerIcon"></slot>
 
         <!-- title -->
-        <h3 class=" tracking-widest">
+        <h3 class="tracking-widest uppercase text-sm">
           <slot name="headerTitle"></slot>
         </h3>
       </div>
 
       <!-- collapse icon -->
       <div 
-        class="border flex h-6 w-6 rounded border-gray-400 cursor-pointer" 
-        :class="{'border-gray-800' : headerRowHasHover}">
+        class="border border-gray-400 cursor-pointer flex h-6 w-6 rounded" 
+        :class="{'border-gray-800' : headerRowHasHover}"
+        @click="toggleIsExpanded"
+      >
 
         <svg v-if="isExpanded" xmlns="http://www.w3.org/2000/svg" 
           class="h-4 w-4 text-gray-400" 
@@ -40,7 +42,7 @@
       />
 
       <!-- + new folder button -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 h-7 w-7 cursor-pointer text-gray-500 hover:text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <svg v-if="!isSharedFolder" xmlns="http://www.w3.org/2000/svg" class="mt-2 h-7 w-7 cursor-pointer text-gray-500 hover:text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     </div>
@@ -55,7 +57,11 @@ export default {
   components: { FolderListItem },
   props: {
     folderList: Array,
-    userName: String
+    userName: String,
+    isSharedFolder: {
+      type: Boolean,
+      default: true
+    }
   },
   data: function(){
     return {

@@ -54,13 +54,13 @@
     <file-list-table :fileList="folderItems" />
 
     <footer 
-      class=" h-28 pt-2 mt-auto flex-shrink-0 text-gray-500 flex flex-col tracking-wider text-right"
+      class=" h-24 pt-2 mt-auto flex-shrink-0 text-gray-400 flex flex-col tracking-wider text-right"
       :class="breakpointClassesOuter"
     >
-      <div class="pt-2 pb-2 border-gray-300 text-right border-b">
+      <div class=" pb-1 border-gray-200 text-right border-b">
         <a 
           v-for="(link, index) in footerLinks" 
-          class="pl-3 pr-3"  
+          class="pl-3 pr-3 text-sm"  
           :class="{ 'border-r' : !isLastItem(index, footerLinks.length-1) }"
           :key="link.title" 
           :href="link.url">
@@ -68,7 +68,7 @@
         </a>
       </div>
 
-      <div class="font-minionIT pt-2 text-base">
+      <div class="font-minionIT pt-1 text-base">
         <small>
           &copy; 2022 Steinway & Sons. Steinway and the Lyre are registered trademarks.
         </small>
