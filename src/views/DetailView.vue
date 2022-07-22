@@ -5,7 +5,7 @@
 
     <div
       class="flex justify-end mt-8 mb-8"
-      :class="breakpointClassesOuter"
+      :class="detalViewBreakpointClassesOuter"
     >
       <button 
         class="
@@ -27,7 +27,7 @@
     <!-- Header -->
     <header 
       class="flex justify-end text-right align-middle uppercase font-knockout481 mb-2"
-      :class="breakpointClassesOuter"
+      :class="detalViewBreakpointClassesOuter"
     >
 
       <!-- Header Text -->
@@ -55,7 +55,7 @@
 
     <footer 
       class=" h-24 pt-2 mt-auto flex-shrink-0 text-gray-400 flex flex-col tracking-wider text-right"
-      :class="breakpointClassesOuter"
+      :class="detalViewBreakpointClassesOuter"
     >
       <div class=" pb-1 border-gray-200 text-right border-b">
         <a 
@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import useDetailViewSharedStyles from '@/use/DetailViewSharedStyles.vue'
+import useSharedStyles from '@/use/SharedStyles.vue'
 import FileListTable from '../components/FileListTable.vue'
 
 export default {
@@ -94,7 +94,7 @@ export default {
   },
   setup(){
     console.log("hi")
-    return useDetailViewSharedStyles()
+    return useSharedStyles()
 
   },
   methods:{

@@ -8,7 +8,11 @@
       <div class="shrink-0 rounded-md h-20 bg-gray-200 border-gray-300 border-dashed border-2 mb-6"> Logo </div>
       
       <!-- Folder Groups Scrollable Area -->
-      <div class="overflow-y-scroll p-4">
+      <div 
+        class="overflow-y-scroll"
+        
+    
+      >
         <!-- User Folder Group -->
         <collapsible-folder-group :folderList="userFolderList" :isSharedFolder="false" userName="user">
           <template #headerIcon>
@@ -44,12 +48,16 @@
 <script>
 import CollapsibleFolderGroup from '../components/CollapsibleFolderGroup.vue'
 import UserState from '../components/UserState.vue'
+import useSharedStyles from '@/use/SharedStyles.vue'
 
 export default {
   name: 'MasterView',
   components: {
     CollapsibleFolderGroup,
     UserState
+  },
+  setup(){
+    return useSharedStyles()
   },
   data: function(){
     return {

@@ -2,7 +2,7 @@
   <!-- data row -->
   <div
     class="grid grid-cols-6 pt-4 pb-4 border-b snap-start items-center"
-    :class="containerBreakpointClasses"
+    :class="detailViewContainerBreakpointClasses"
   >
     <div class="col-span-3">
       
@@ -92,7 +92,7 @@
   </div>
 </template>
 <script>
-import useDetailViewSharedStyles from '@/use/DetailViewSharedStyles.vue'
+import useDetailViewSharedStyles from '@/use/SharedStyles.vue'
 export default {
   name: 'FileListTableRow',
   props: {

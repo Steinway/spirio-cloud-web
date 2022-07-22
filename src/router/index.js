@@ -22,6 +22,11 @@ const routes = [
         name: 'test',
         component: DetailView
       },
+      {
+        path: '/folder/:userName',
+        name: 'root',
+        component: DetailView
+      },
     ]
   },
   // {

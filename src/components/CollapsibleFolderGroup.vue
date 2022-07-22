@@ -1,21 +1,33 @@
 <template>
   <div class="mb-8 font-minion tracking-wider">
+
     <!-- Folder Group Header -->
-    <div class="flex justify-between cursor-pointer" @mouseover="setHeaderRowHasHover(true)" @mouseleave="setHeaderRowHasHover(false)" >
-      <div class="flex mb-2">
+    <div
+      class="flex justify-between cursor-pointer items-center" 
+      :class="headerClasses"
+      @mouseover="setRowHasHover(true)"
+      @mouseout="setRowHasHover(false)"
+    >
+      <router-link
+        :to="`/folder/${userName}`" 
+        class="flex pt-2 pb-2 w-full"
+        :class="masterViewBreakpointClassesOuter"
+      >
         <slot name="headerIcon"></slot>
 
         <!-- title -->
         <h3 class="tracking-widest uppercase text-sm">
           <slot name="headerTitle"></slot>
         </h3>
-      </div>
+      </router-link>
 
       <!-- collapse icon -->
       <div 
         class="border border-gray-400 cursor-pointer flex h-6 w-6 rounded" 
         :class="{'border-gray-800' : headerRowHasHover}"
         @click="toggleIsExpanded"
+        @mouseover="setHeaderRowHasHover(true)" 
+        @mouseleave="setHeaderRowHasHover(false)" 
       >
 
         <svg v-if="isExpanded" xmlns="http://www.w3.org/2000/svg" 
@@ -33,7 +45,10 @@
     </div>
 
     <!-- Folder Group List -->
-    <div v-if="isExpanded">
+    <div 
+      v-if="isExpanded"
+      :class="masterViewContainerBreakpointClasses"
+    >
       <folder-list-item 
         v-for="folder in folderList"
         :title="folder"
@@ -51,6 +66,7 @@
 
 <script>
 import FolderListItem from "./FolderListItem.vue"
+import useSharedStyles from "@/use/SharedStyles.vue"
 
 export default {
   name: 'CollapsibleFolderGroup',
@@ -63,6 +79,9 @@ export default {
       default: true
     }
   },
+  setup() {
+    return useSharedStyles()
+  },
   data: function(){
     return {
       isExpanded: true,
@@ -70,14 +89,31 @@ export default {
     }
   },
   computed:{
-    
+    headerClasses: function(){
+      let classes = `
+        ${this.masterViewBreakpointClassesInner}
+      `
+      if(this.isActive){
+        classes += ' bg-gray-200'
+      }
+
+      if(this.rowHasHover && this.isActive){
+        classes += ' text-gray-500'
+      }
+      return classes
+    },
+    isActive: function(){
+      // TODO: replace with better matching key to avoid duplicate active folder highlights
+      return this.$route.name === 'root' && this.$route.params.userName === this.$props.userName
+      // this.$route.params.userName === this.$props.userName
+      
+    }
   },
   methods: {
     toggleIsExpanded(){
       this.isExpanded = !this.isExpanded
     },
     setHeaderRowHasHover(bool){
-      console.log("HI"), 
       this.headerRowHasHover = bool
     }
   }

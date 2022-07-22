@@ -1,7 +1,7 @@
 <template>
   <div
     class="grid grid-cols-6 uppercase tracking-widest"
-    :class="containerBreakpointClasses"
+    :class="detailViewContainerBreakpointClasses"
   >
     <!-- Table Header -->
     <div class="col-span-3">
@@ -16,7 +16,7 @@
   </div>
   <div 
     class=" col-span-6 border-b-4 border-black mt-2 mb-1"
-    :class="containerBreakpointClasses"
+    :class="detailViewContainerBreakpointClasses"
   ></div>
 
   <div class="overflow-y-auto snap-y relative ">
@@ -33,7 +33,7 @@
   </div>
 </template>
 <script>
-import useDetailViewSharedStyles from '@/use/DetailViewSharedStyles.vue'
+import useDetailViewSharedStyles from '@/use/SharedStyles.vue'
 import FileListTableRow from '@/components/FileListTableRow.vue'
 export default {
   name: 'FileListTable',
